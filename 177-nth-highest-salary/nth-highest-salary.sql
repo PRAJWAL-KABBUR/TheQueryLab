@@ -1,12 +1,8 @@
-CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
-BEGIN
-  DECLARE offset_val INT;
-  SET offset_val = N - 1;
-
-  RETURN (
-    SELECT DISTINCT salary
-    FROM Employee
-    ORDER BY salary DESC
-    LIMIT 1 OFFSET offset_val
-  );
-END;
+create function getNthHighestSalary(N INT) returns INT
+begin
+declare offset_val INT;
+set offset_val = N - 1;
+return(select distinct salary
+FROM Employee
+order by salary desc limit 1 OFFSET offset_val);
+end;
