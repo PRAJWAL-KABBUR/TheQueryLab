@@ -1,10 +1,5 @@
 # Write your MySQL query statement below
-SELECT 
-    s1.score,
-    (
-        SELECT COUNT(DISTINCT s2.score)
-        FROM Scores s2
-        WHERE s2.score > s1.score
-    ) + 1 AS `rank`
-FROM Scores s1
-ORDER BY s1.score DESC;
+select s1.score,(select count(distinct s2.score)
+from Scores s2 where s2.score > s1.score) + 1 AS `rank`
+from Scores s1
+order by s1.score desc;
